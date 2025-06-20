@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Energy Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Home Energy Management System</h1>
+        
+        <div class="buttons">
+            <!-- Buttons for Air Conditioner -->
+            <button class="control-btn" onclick="startMonitoring('AirConditioner',0)">Start AirConditioner</button>
+            <button class="control-btn" id="stop-AirConditioner" onclick="stopMonitoring('AirConditioner')">Stop Air Conditioner</button>
+
+            <!-- Buttons for Washing Machine -->
+            <button class="control-btn" onclick="startMonitoring('WashingMachine',1)">Start Washing Machine</button>
+            <button class="control-btn" id="stop-WashingMachine" onclick="stopMonitoring('WashingMachine')">Stop Washing Machine</button>
+
+            <!-- Buttons for Refrigerator -->
+            <button class="control-btn" onclick="startMonitoring('Refrigerator',2)">Start Refrigerator</button>
+            <button class="control-btn" id="stop-Refrigerator" onclick="stopMonitoring('Refrigerator')">Stop Refrigerator</button>
+
+            <button class="control-btn" onclick="stopAllMonitoring()">Stop All Appliances</button>
+            <button class="control-btn" onclick="fetchConsumptionDetails()">Display Consumption Details</button>
+            <button class="control-btn" onclick="fetchMonthlyBill()">Display Monthly Bill</button>
+            <button class="control-btn" onclick="fetchArchivedData()">Display Archived Data</button>
+            <button class="control-btn" onclick="fetchPrediction()">Predict Next Day Consumption</button>
+            <button class="control-btn" onclick="fetchMonthlyPrediction()">Predict Next Month Consumption</button>
+            <button class="control-btn" onclick="resetData()">Reset Data</button>
+            
+        </div>
+        
+        <div id="chart-container">
+            <canvas id="realTimeChart" width="800" height="400"></canvas>
+        </div>
+        
+        <div id="results">
+            <!-- Results will be injected here -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
